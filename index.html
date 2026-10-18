@@ -1,24 +1,513 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#160f2a">
+  <meta name="theme-color" content="#211c30">
 
-  <title>For Jaanu ♡ A Little Universe Made with Love</title>
-  <meta name="description" content="A little universe filled with love, birthday wishes, and memories, made especially for Jaanu.">
+  <title>For Jaanu ♡</title>
+  <meta name="description" content="A little universe made with love, just for Jaanu.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --background: #211c30;
+      --surface: rgba(255, 255, 255, 0.045);
+      --text: #eee9f3;
+      --muted: #bdb2cb;
+      --lavender: #c9c1dc;
+      --blue: #b9c9dc;
+      --border: rgba(220, 211, 237, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 50% 0%, #39304b 0%, transparent 55%),
+        linear-gradient(180deg, #171522, #211c30 55%, #191725);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      margin: 20px 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+    }
+
+    h1 em, h2 em {
+      color: var(--lavender);
+      font-weight: 500;
+    }
+
+    .sky {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at center,
+        transparent 35%,
+        rgba(0, 0, 0, 0.13) 100%
+      );
+    }
+
+    .topbar {
+      width: min(1100px, 90%);
+      margin: auto;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-moon {
+      color: var(--lavender);
+      margin-right: 7px;
+    }
+
+    .music-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 9px 15px;
+      background: var(--surface);
+      font-size: 0.82rem;
+    }
+
+    .music-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .section {
+      width: min(1000px, 88%);
+      margin: auto;
+      padding: 100px 0;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-moon {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #e6e0f1;
+      font-size: 4rem;
+      margin-bottom: 22px;
+      text-shadow: 0 0 30px rgba(201, 193, 220, 0.25);
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      max-width: 530px;
+      color: #d0c8dc;
+      font-size: 1.02rem;
+    }
+
+    .pill-link {
+      margin-top: 22px;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      background: var(--surface);
+      font-size: 0.9rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .pill-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .pill-link span {
+      margin-left: 8px;
+    }
+
+    .scroll-note {
+      position: absolute;
+      bottom: 20px;
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.17em;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      margin-top: 15px;
+    }
+
+    .letter-card,
+    .distance-card,
+    .secret-message {
+      padding: clamp(24px, 5vw, 48px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .letter-stars,
+    .constellation,
+    .ending-stars {
+      text-align: center;
+      color: var(--lavender);
+      letter-spacing: 5px;
+    }
+
+    .letter-to {
+      margin-top: 32px;
+      color: #d4cbe1;
+    }
+
+    .letter-text {
+      color: #e2dce9;
+      line-height: 1.95;
+      overflow-wrap: anywhere;
+    }
+
+    .letter-text p {
+      margin: 0 0 1.25em;
+    }
+
+    .letter-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .letter-signoff {
+      margin-top: 32px;
+      color: #cfc4dc;
+    }
+
+    .signature {
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      margin-top: 0;
+    }
+
+    .signature span {
+      color: var(--lavender);
+    }
+
+    .text-button {
+      padding: 9px 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: center;
+      gap: 24px;
+    }
+
+    .photo-card {
+      margin: 0;
+      padding: 6px 6px 12px;
+      border-radius: 5px;
+      background: #f1edf3;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-card:nth-child(1) {
+      transform: rotate(-2deg);
+    }
+
+    .photo-card:nth-child(2) {
+      transform: translateY(15px) rotate(2deg);
+    }
+
+    .photo-card:nth-child(3) {
+      transform: rotate(-1deg);
+    }
+
+    .photo-card:hover {
+      transform: translateY(-5px) rotate(0);
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      display: block;
+      padding: 10px 3px 0;
+      color: #51475d;
+      text-align: center;
+      font-size: 0.76rem;
+    }
+
+    .distance-card {
+      text-align: center;
+    }
+
+    .distance-card h2 {
+      margin: 22px 0;
+    }
+
+    .distance-card > p:not(.eyebrow) {
+      max-width: 650px;
+      margin: auto;
+      color: #d5cde0;
+    }
+
+    .moon-phase {
+      margin-top: 24px;
+      color: var(--lavender);
+      font-size: 2rem;
+    }
+
+    .surprise-wrap {
+      max-width: 680px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .gift-button {
+      width: 100%;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      transition: transform 0.25s, background 0.25s;
+    }
+
+    .gift-button:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.075);
+    }
+
+    .gift-sparkle {
+      color: var(--lavender);
+    }
+
+    .gift-box {
+      font-size: 2.8rem;
+    }
+
+    .gift-label {
+      font-size: 0.9rem;
+    }
+
+    .secret-message {
+      margin-top: 25px;
+      text-align: left;
+    }
+
+    .secret-message[hidden] {
+      display: none;
+    }
+
+    .secret-heart {
+      color: var(--lavender);
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .secret-message h3 {
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    .secret-message p {
+      color: #d5cde0;
+    }
+
+    .secret-signature {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .ending {
+      text-align: center;
+      padding-bottom: 90px;
+    }
+
+    .ending h2 {
+      margin: 28px 0;
+    }
+
+    .ending-line {
+      color: #d5cde0;
+    }
+
+    .ending-heart {
+      display: block;
+      margin: 15px 0 28px;
+      color: var(--lavender);
+      font-size: 2rem;
+    }
+
+    .back-top {
+      display: inline-block;
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer {
+      width: min(1000px, 88%);
+      margin: auto;
+      padding: 25px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 650px) {
+      .section {
+        padding: 70px 0;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .photo-card:nth-child(2) {
+        transform: translateY(12px) rotate(2deg);
+      }
+
+      .photo-card:nth-child(3) {
+        grid-column: 1 / -1;
+        width: 65%;
+        justify-self: center;
+        margin-top: 10px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="sky" aria-hidden="true" id="sky"></div>
+  <div class="sky" id="sky" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="topbar">
@@ -33,14 +522,8 @@
   </header>
 
   <main>
-    <!-- Birthday welcome -->
     <section class="hero section" id="home">
-      <div class="orbit orbit-one"></div>
-      <div class="orbit orbit-two"></div>
-
-      <div class="hero-moon" aria-hidden="true">
-        <span>☾</span>
-      </div>
+      <div class="hero-moon" aria-hidden="true">☾</div>
 
       <p class="eyebrow reveal">
         A little corner of the universe, made just for you
@@ -52,7 +535,7 @@
       </h1>
 
       <p class="hero-copy reveal">
-        If I could, I'd fold the distance between us<br class="desktop-only">
+        If I could, I'd fold the distance between us
         and spend this beautiful day right by your side.
       </p>
 
@@ -63,7 +546,6 @@
       <p class="scroll-note">MADE WITH ALL MY HEART · JUST FOR YOU</p>
     </section>
 
-    <!-- A letter from Chaand -->
     <section class="letter-section section" id="letter">
       <div class="section-heading reveal">
         <p class="eyebrow">01 / a letter from my heart to yours</p>
@@ -75,14 +557,21 @@
       </div>
 
       <article class="letter-card reveal">
-        <div class="letter-stars" aria-hidden="true">✦　·　✧　·　✦</div>
+        <div class="letter-stars" aria-hidden="true">✦ · ✧ · ✦</div>
 
         <p class="letter-to">To my Jaanu,</p>
 
-        <div id="letterText" class="letter-text" aria-live="polite"></div>
+        <div id="letterText" class="letter-text" aria-live="polite">
+          <p>Today is your day, Jaanu, and if there is one thing I wish you could feel through this screen, it is just how loved you are.</p>
+
+          <p>Distance means I cannot be there to give you a birthday hug, see your smile up close, or make a thousand little memories beside you today. But it will never mean that you are any less close to my heart.</p>
+
+          <p>I hope this new year of your life brings you soft mornings, reasons to laugh, courage for the hard days, and all the little things your heart has been quietly wishing for. You deserve a love that feels safe, a life that feels kind, and happiness that stays.</p>
+
+          <p>Until I can celebrate beside you, let this little universe remind you that somewhere, under this same sky, someone is thinking of you with the biggest smile.</p>
+        </div>
 
         <p class="letter-signoff">No matter the distance, always yours,</p>
-
         <p class="signature">Chaand <span>♡</span></p>
 
         <button id="replayLetter" class="text-button" type="button">
@@ -91,7 +580,6 @@
       </article>
     </section>
 
-    <!-- Memories gallery -->
     <section class="memories-section section" id="memories">
       <div class="section-heading reveal">
         <p class="eyebrow">02 / little pieces of happiness</p>
@@ -103,29 +591,26 @@
       </div>
 
       <div class="gallery">
-        <div class="photo-card photo-tall reveal">
-          <img src="photo%201.svg.jpg" alt="A special memory">
-          <span class="photo-caption">a little moment, forever treasured</span>
-        </div>
+        <figure class="photo-card reveal">
+          <img src="photo%201.svg.jpg" alt="A special memory" loading="lazy">
+          <figcaption class="photo-caption">a little moment, forever treasured</figcaption>
+        </figure>
 
-        <div class="photo-card photo-offset reveal">
-          <img src="photo%202.svg.jpg" alt="A favourite memory">
-          <span class="photo-caption">one of my favourite feelings</span>
-        </div>
+        <figure class="photo-card reveal">
+          <img src="photo%202.svg.jpg" alt="A favourite memory" loading="lazy">
+          <figcaption class="photo-caption">one of my favourite feelings</figcaption>
+        </figure>
 
-        <div class="photo-card photo-small reveal">
-          <img src="photo%203.svg.jpg" alt="A precious memory">
-          <span class="photo-caption">you, today and always</span>
-        </div>
+        <figure class="photo-card reveal">
+          <img src="photo%203.svg.jpg" alt="A precious memory" loading="lazy">
+          <figcaption class="photo-caption">you, today and always</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- A little reminder about the distance -->
     <section class="distance-section section">
       <div class="distance-card reveal">
-        <div class="constellation" aria-hidden="true">
-          ✧ · ˚　✦　˚ · ✧
-        </div>
+        <div class="constellation" aria-hidden="true">✧ · ˚ · ✦ · ˚ · ✧</div>
 
         <p class="eyebrow">two places, one beautiful sky</p>
 
@@ -136,7 +621,9 @@
           Somewhere beneath these stars, I'll be thinking of you,
           wishing I could be there to see your smile and make you feel
           just how loved you are.
+        </p>
 
+        <p>
           Until the day distance is no longer between us, let this little
           corner of the universe be a warm hug from me to you.
         </p>
@@ -145,7 +632,6 @@
       </div>
     </section>
 
-    <!-- The hidden birthday surprise -->
     <section class="surprise-section section" id="surprise">
       <div class="section-heading reveal">
         <p class="eyebrow">03 / one last little surprise</p>
@@ -198,11 +684,8 @@
       </div>
     </section>
 
-    <!-- Birthday closing -->
     <section class="ending section">
-      <div class="ending-stars" aria-hidden="true">
-        ✦　✧　·　✦　·　✧
-      </div>
+      <div class="ending-stars" aria-hidden="true">✦ · ✧ · ✦</div>
 
       <p class="eyebrow">distance can never measure what the heart feels</p>
 
@@ -212,7 +695,6 @@
       </h2>
 
       <p class="ending-line">Happy birthday, my Jaanu.</p>
-
       <span class="ending-heart">♡</span>
 
       <a href="#home" class="back-top">Back to the beginning ↑</a>
@@ -224,11 +706,115 @@
     <span>☾ · ✦ · ♡</span>
   </footer>
 
-  <!-- Background music -->
   <audio id="bgMusic" loop preload="none">
     <source src="assets/our-song.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Letter replay: keeps the original paragraphs and spacing.
+      const letterText = document.getElementById("letterText");
+      const replayLetter = document.getElementById("replayLetter");
+
+      if (replayLetter && letterText) {
+        const originalLetter = letterText.innerHTML;
+
+        replayLetter.addEventListener("click", () => {
+          letterText.innerHTML = "";
+          void letterText.offsetWidth;
+          letterText.innerHTML = originalLetter;
+        });
+      }
+
+      // Background music.
+      const musicToggle = document.getElementById("musicToggle");
+      const musicLabel = document.getElementById("musicLabel");
+      const bgMusic = document.getElementById("bgMusic");
+
+      if (musicToggle && bgMusic) {
+        musicToggle.addEventListener("click", async () => {
+          if (bgMusic.paused) {
+            try {
+              await bgMusic.play();
+              musicToggle.setAttribute("aria-pressed", "true");
+              if (musicLabel) musicLabel.textContent = "Pause our song";
+            } catch (error) {
+              if (musicLabel) musicLabel.textContent = "Add song to play";
+              console.error("Could not play music:", error);
+            }
+          } else {
+            bgMusic.pause();
+            musicToggle.setAttribute("aria-pressed", "false");
+            if (musicLabel) musicLabel.textContent = "Play our song";
+          }
+        });
+      }
+
+      // Birthday gift.
+      const giftButton = document.getElementById("giftButton");
+      const secretMessage = document.getElementById("secretMessage");
+
+      if (giftButton && secretMessage) {
+        giftButton.addEventListener("click", () => {
+          const opening = secretMessage.hidden;
+          secretMessage.hidden = !opening;
+          giftButton.setAttribute("aria-expanded", String(opening));
+
+          const label = giftButton.querySelector(".gift-label");
+          if (label) {
+            label.textContent = opening
+              ? "Your surprise is open ♡"
+              : "Open your little surprise";
+          }
+
+          if (opening) {
+            secretMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }
+        });
+      }
+
+      // Twinkling stars.
+      const sky = document.getElementById("sky");
+
+      if (sky) {
+        for (let i = 0; i < 55; i++) {
+          const star = document.createElement("span");
+          star.style.cssText = `
+            position:absolute;
+            left:${Math.random() * 100}%;
+            top:${Math.random() * 100}%;
+            width:${Math.random() * 2 + 1}px;
+            height:${Math.random() * 2 + 1}px;
+            border-radius:50%;
+            background:#e4dff1;
+            opacity:${Math.random() * 0.4 + 0.15};
+            pointer-events:none;
+          `;
+          sky.appendChild(star);
+        }
+      }
+
+      // Scroll reveal.
+      const revealElements = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        revealElements.forEach(element => observer.observe(element));
+      } else {
+        revealElements.forEach(element => element.classList.add("visible"));
+      }
+    });
+  </script>
 </body>
 </html>
