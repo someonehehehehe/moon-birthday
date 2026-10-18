@@ -1,243 +1,36 @@
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ========================================
-  // 1. BIRTHDAY LETTER — WITH PROPER PARAGRAPHS
-  // ========================================
+<!-- A letter from Chaand -->
+<section class="letter-section section" id="letter">
+  <div class="section-heading reveal">
+    <p class="eyebrow">01 / a letter from my heart to yours</p>
 
-  const letterText = document.getElementById("letterText");
-  const replayLetter = document.getElementById("replayLetter");
+    <h2>
+      Some feelings are too special<br>
+      <em>not to put into words.</em>
+    </h2>
+  </div>
 
-  const letterParagraphs = [
-    "Today is your day, Jaanu, and if there is one thing I wish you could feel through this screen, it is just how loved you are.",
+  <article class="letter-card reveal">
+    <div class="letter-stars" aria-hidden="true">✦　·　✧　·　✦</div>
 
-    "Distance means I cannot be there to give you a birthday hug, see your smile up close, or make a thousand little memories beside you today. But it will never mean that you are any less close to my heart.",
+    <p class="letter-to">To my Jaanu,</p>
 
-    "I hope this new year of your life brings you soft mornings, reasons to laugh, courage for the hard days, and all the little things your heart has been quietly wishing for. You deserve a love that feels safe, a life that feels kind, and happiness that stays.",
+    <div id="letterText" class="letter-text" aria-live="polite">
+      <p>Today is your day, Jaanu, and if there is one thing I wish you could feel through this screen, it is just how loved you are.</p>
 
-    "Until I can celebrate beside you, let this little universe remind you that somewhere, under this same sky, someone is thinking of you with the biggest smile."
-  ];
+      <p>Distance means I cannot be there to give you a birthday hug, see your smile up close, or make a thousand little memories beside you today. But it will never mean that you are any less close to my heart.</p>
 
-  let typingTimer = null;
-  let typingSession = 0;
+      <p>I hope this new year of your life brings you soft mornings, reasons to laugh, courage for the hard days, and all the little things your heart has been quietly wishing for. You deserve a love that feels safe, a life that feels kind, and happiness that stays.</p>
 
-  function displayLetter(animate = true) {
-    if (!letterText) return;
+      <p>Until I can celebrate beside you, let this little universe remind you that somewhere, under this same sky, someone is thinking of you with the biggest smile.</p>
+    </div>
 
-    // Cancel any previous typing animation.
-    typingSession++;
-    const currentSession = typingSession;
+    <p class="letter-signoff">No matter the distance, always yours,</p>
 
-    if (typingTimer !== null) {
-      clearTimeout(typingTimer);
-      typingTimer = null;
-    }
+    <p class="signature">Chaand <span>♡</span></p>
 
-    // Remove previous content and create separate paragraphs.
-    letterText.replaceChildren();
-
-    const paragraphs = letterParagraphs.map(() => {
-      const paragraph = document.createElement("p");
-      letterText.appendChild(paragraph);
-      return paragraph;
-    });
-
-    if (!animate) {
-      paragraphs.forEach((paragraph, index) => {
-        paragraph.textContent = letterParagraphs[index];
-      });
-      return;
-    }
-
-    let paragraphIndex = 0;
-    let characterIndex = 0;
-
-    function typeNextCharacter() {
-      if (currentSession !== typingSession) return;
-
-      if (paragraphIndex >= letterParagraphs.length) {
-        typingTimer = null;
-        return;
-      }
-
-      const currentParagraph = letterParagraphs[paragraphIndex];
-      const currentElement = paragraphs[paragraphIndex];
-
-      currentElement.textContent = currentParagraph.slice(
-        0,
-        characterIndex + 1
-      );
-
-      characterIndex++;
-
-      if (characterIndex >= currentParagraph.length) {
-        paragraphIndex++;
-        characterIndex = 0;
-      }
-
-      typingTimer = setTimeout(typeNextCharacter, 24);
-    }
-
-    typeNextCharacter();
-  }
-
-  // Start the letter animation.
-  displayLetter(true);
-
-  // Replay the letter whenever the button is clicked.
-  if (replayLetter) {
-    replayLetter.addEventListener("click", () => {
-      displayLetter(true);
-    });
-  }
-
-
-  // ========================================
-  // 2. BACKGROUND MUSIC TOGGLE
-  // ========================================
-
-  const musicToggle = document.getElementById("musicToggle");
-  const musicLabel = document.getElementById("musicLabel");
-  const bgMusic = document.getElementById("bgMusic");
-
-  if (musicToggle && bgMusic) {
-    bgMusic.volume = 0.5;
-
-    musicToggle.addEventListener("click", async () => {
-      if (bgMusic.paused) {
-        try {
-          await bgMusic.play();
-
-          musicToggle.setAttribute("aria-pressed", "true");
-
-          if (musicLabel) {
-            musicLabel.textContent = "Pause our song";
-          }
-
-          musicToggle.classList.add("is-playing");
-        } catch (error) {
-          console.error("Music could not be played:", error);
-
-          if (musicLabel) {
-            musicLabel.textContent = "Music unavailable";
-          }
-        }
-      } else {
-        bgMusic.pause();
-
-        musicToggle.setAttribute("aria-pressed", "false");
-
-        if (musicLabel) {
-          musicLabel.textContent = "Play our song";
-        }
-
-        musicToggle.classList.remove("is-playing");
-      }
-    });
-
-    bgMusic.addEventListener("ended", () => {
-      musicToggle.setAttribute("aria-pressed", "false");
-
-      if (musicLabel) {
-        musicLabel.textContent = "Play our song";
-      }
-
-      musicToggle.classList.remove("is-playing");
-    });
-  }
-
-
-  // ========================================
-  // 3. HIDDEN BIRTHDAY SURPRISE
-  // ========================================
-
-  const giftButton = document.getElementById("giftButton");
-  const secretMessage = document.getElementById("secretMessage");
-
-  if (giftButton && secretMessage) {
-    giftButton.addEventListener("click", () => {
-      const isHidden = secretMessage.hidden;
-
-      secretMessage.hidden = !isHidden;
-      giftButton.setAttribute("aria-expanded", String(isHidden));
-
-      const giftLabel = giftButton.querySelector(".gift-label");
-
-      if (giftLabel) {
-        giftLabel.textContent = isHidden
-          ? "Your surprise is open ♡"
-          : "Open your little surprise";
-      }
-
-      if (isHidden) {
-        secretMessage.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }
-    });
-  }
-
-
-  // ========================================
-  // 4. ANIMATED STARRY SKY
-  // ========================================
-
-  const sky = document.getElementById("sky");
-
-  if (sky) {
-    const fragment = document.createDocumentFragment();
-
-    for (let i = 0; i < 75; i++) {
-      const star = document.createElement("span");
-
-      star.className = "sky-star";
-
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.setProperty(
-        "--star-size",
-        `${Math.random() * 2 + 1}px`
-      );
-      star.style.setProperty(
-        "--star-duration",
-        `${Math.random() * 3 + 2}s`
-      );
-      star.style.animationDelay = `${Math.random() * 4}s`;
-
-      fragment.appendChild(star);
-    }
-
-    sky.appendChild(fragment);
-  }
-
-
-  // ========================================
-  // 5. SCROLL REVEAL ANIMATIONS
-  // ========================================
-
-  const revealElements = document.querySelectorAll(".reveal");
-
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-  } else {
-    revealElements.forEach((element) => {
-      element.classList.add("visible");
-    });
-  }
-});
+    <button id="replayLetter" class="text-button" type="button">
+      Read it again ↻
+    </button>
+  </article>
+</section>
