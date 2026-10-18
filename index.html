@@ -1,36 +1,234 @@
 
-<!-- A letter from Chaand -->
-<section class="letter-section section" id="letter">
-  <div class="section-heading reveal">
-    <p class="eyebrow">01 / a letter from my heart to yours</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#160f2a">
 
-    <h2>
-      Some feelings are too special<br>
-      <em>not to put into words.</em>
-    </h2>
-  </div>
+  <title>For Jaanu ♡ A Little Universe Made with Love</title>
+  <meta name="description" content="A little universe filled with love, birthday wishes, and memories, made especially for Jaanu.">
 
-  <article class="letter-card reveal">
-    <div class="letter-stars" aria-hidden="true">✦　·　✧　·　✦</div>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <p class="letter-to">To my Jaanu,</p>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
-    <div id="letterText" class="letter-text" aria-live="polite">
-      <p>Today is your day, Jaanu, and if there is one thing I wish you could feel through this screen, it is just how loved you are.</p>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-      <p>Distance means I cannot be there to give you a birthday hug, see your smile up close, or make a thousand little memories beside you today. But it will never mean that you are any less close to my heart.</p>
+<body>
+  <div class="sky" aria-hidden="true" id="sky"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-      <p>I hope this new year of your life brings you soft mornings, reasons to laugh, courage for the hard days, and all the little things your heart has been quietly wishing for. You deserve a love that feels safe, a life that feels kind, and happiness that stays.</p>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Back to the beginning">
+      <span class="brand-moon">☾</span> little universe
+    </a>
 
-      <p>Until I can celebrate beside you, let this little universe remind you that somewhere, under this same sky, someone is thinking of you with the biggest smile.</p>
-    </div>
-
-    <p class="letter-signoff">No matter the distance, always yours,</p>
-
-    <p class="signature">Chaand <span>♡</span></p>
-
-    <button id="replayLetter" class="text-button" type="button">
-      Read it again ↻
+    <button id="musicToggle" class="music-toggle" type="button" aria-pressed="false">
+      <span class="music-dot"></span>
+      <span id="musicLabel">Play our song</span>
     </button>
-  </article>
-</section>
+  </header>
+
+  <main>
+    <!-- Birthday welcome -->
+    <section class="hero section" id="home">
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+
+      <div class="hero-moon" aria-hidden="true">
+        <span>☾</span>
+      </div>
+
+      <p class="eyebrow reveal">
+        A little corner of the universe, made just for you
+      </p>
+
+      <h1 class="reveal">
+        Happy birthday,<br>
+        <em>Jaanu.</em>
+      </h1>
+
+      <p class="hero-copy reveal">
+        If I could, I'd fold the distance between us<br class="desktop-only">
+        and spend this beautiful day right by your side.
+      </p>
+
+      <a class="pill-link reveal" href="#letter">
+        There's a little note for you <span>↓</span>
+      </a>
+
+      <p class="scroll-note">MADE WITH ALL MY HEART · JUST FOR YOU</p>
+    </section>
+
+    <!-- A letter from Chaand -->
+    <section class="letter-section section" id="letter">
+      <div class="section-heading reveal">
+        <p class="eyebrow">01 / a letter from my heart to yours</p>
+
+        <h2>
+          Some feelings are too special<br>
+          <em>not to put into words.</em>
+        </h2>
+      </div>
+
+      <article class="letter-card reveal">
+        <div class="letter-stars" aria-hidden="true">✦　·　✧　·　✦</div>
+
+        <p class="letter-to">To my Jaanu,</p>
+
+        <div id="letterText" class="letter-text" aria-live="polite"></div>
+
+        <p class="letter-signoff">No matter the distance, always yours,</p>
+
+        <p class="signature">Chaand <span>♡</span></p>
+
+        <button id="replayLetter" class="text-button" type="button">
+          Read it again ↻
+        </button>
+      </article>
+    </section>
+
+    <!-- Memories gallery -->
+    <section class="memories-section section" id="memories">
+      <div class="section-heading reveal">
+        <p class="eyebrow">02 / little pieces of happiness</p>
+
+        <h2>
+          Miles may keep us apart,<br>
+          <em>but you still feel like home.</em>
+        </h2>
+      </div>
+
+      <div class="gallery">
+        <div class="photo-card photo-tall reveal">
+          <img src="photo%201.svg.jpg" alt="A special memory">
+          <span class="photo-caption">a little moment, forever treasured</span>
+        </div>
+
+        <div class="photo-card photo-offset reveal">
+          <img src="photo%202.svg.jpg" alt="A favourite memory">
+          <span class="photo-caption">one of my favourite feelings</span>
+        </div>
+
+        <div class="photo-card photo-small reveal">
+          <img src="photo%203.svg.jpg" alt="A precious memory">
+          <span class="photo-caption">you, today and always</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- A little reminder about the distance -->
+    <section class="distance-section section">
+      <div class="distance-card reveal">
+        <div class="constellation" aria-hidden="true">
+          ✧ · ˚　✦　˚ · ✧
+        </div>
+
+        <p class="eyebrow">two places, one beautiful sky</p>
+
+        <h2>Look up tonight, Jaanu.</h2>
+
+        <p>
+          Even when we're miles apart, we still share the same sky.
+          Somewhere beneath these stars, I'll be thinking of you,
+          wishing I could be there to see your smile and make you feel
+          just how loved you are.
+
+          Until the day distance is no longer between us, let this little
+          corner of the universe be a warm hug from me to you.
+        </p>
+
+        <div class="moon-phase" aria-hidden="true">☾</div>
+      </div>
+    </section>
+
+    <!-- The hidden birthday surprise -->
+    <section class="surprise-section section" id="surprise">
+      <div class="section-heading reveal">
+        <p class="eyebrow">03 / one last little surprise</p>
+
+        <h2>
+          I saved one more thing<br>
+          <em>just for you.</em>
+        </h2>
+      </div>
+
+      <div class="surprise-wrap reveal">
+        <button
+          class="gift-button"
+          id="giftButton"
+          type="button"
+          aria-expanded="false"
+          aria-controls="secretMessage"
+        >
+          <span class="gift-sparkle">✦</span>
+          <span class="gift-box">🎁</span>
+          <span class="gift-label">Open your little surprise</span>
+        </button>
+
+        <div class="secret-message" id="secretMessage" hidden>
+          <div class="secret-heart">♡</div>
+
+          <p class="eyebrow">my birthday wish for you</p>
+
+          <h3>
+            May life be as gentle with you<br>
+            as you have been with my heart.
+          </h3>
+
+          <p>
+            I hope this new year of your life brings you countless reasons
+            to smile, quiet moments of peace, dreams that come true,
+            and the kind of happiness that stays long after the day ends.
+          </p>
+
+          <p>
+            And someday, I hope we look back at this little website
+            together, smiling at how we once turned miles into something
+            filled with love.
+          </p>
+
+          <p class="secret-signature">
+            Happy birthday, my Jaanu. You mean so much to me. ✨
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Birthday closing -->
+    <section class="ending section">
+      <div class="ending-stars" aria-hidden="true">
+        ✦　✧　·　✦　·　✧
+      </div>
+
+      <p class="eyebrow">distance can never measure what the heart feels</p>
+
+      <h2>
+        You're my favourite<br>
+        <em>kind of magic.</em>
+      </h2>
+
+      <p class="ending-line">Happy birthday, my Jaanu.</p>
+
+      <span class="ending-heart">♡</span>
+
+      <a href="#home" class="back-top">Back to the beginning ↑</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>made with love by Chaand</span>
+    <span>☾ · ✦ · ♡</span>
+  </footer>
+
+  <!-- Background music -->
+  <audio id="bgMusic" loop preload="none">
+    <source src="assets/our-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
